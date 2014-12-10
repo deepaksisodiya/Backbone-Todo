@@ -17,6 +17,20 @@
     </script>
 
 
+    <script type="text/html" id="todoListTemplate">
+
+        <% _.each(obj, function(item, index, array) { %>
+
+        <div>
+            <input type="checkbox">
+            <label>  <%= item.get("title") %> </label>
+            <button data-index="<%= index %>" id="remove">x</button>
+        </div>
+
+        <% }) %>
+
+    </script>
+
 </head>
 <body>
 
@@ -25,9 +39,14 @@
 
 </header>
 
+<section id="todoList">
+
+</section>
+
 
 <script src="src/model/todo.js"></script>
 <script src="src/collection/todos.js"></script>
 <script src="src/view/todoCreater.js"></script>
+<script src="src/view/todoList.js"></script>
 </body>
 </html>

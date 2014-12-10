@@ -5,6 +5,10 @@
 
 app.createrView = Backbone.View.extend({
 
+	events : {
+		"click #add" : "addTodo"
+	},
+
 	initialize : function() {
 		console.log("creater view");
 		this.render({}, "todoCreaterTemplate", this.$el);
@@ -17,6 +21,12 @@ app.createrView = Backbone.View.extend({
 			obj: dataObj
 		});
 		domNode.html(tempHTML);
+	},
+
+	addTodo : function() {
+		var inputValue = $("#input-todo").val();
+		todos.create({ title : inputValue , completed : false});
+		//$("#input-todo").val("");
 	}
 
 });
