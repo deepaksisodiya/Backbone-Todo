@@ -5,7 +5,7 @@
 
 app.Todos = Backbone.Collection.extend({
 
-	Model : Todo,
+	Model : app.Todo,
 
 	localStorage: new Backbone.LocalStorage("todos-backbone"),
 
@@ -15,4 +15,4 @@ app.Todos = Backbone.Collection.extend({
 
 });
 
-var todos = new Todos();
+var todos = new app.Todos();

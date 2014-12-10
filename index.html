@@ -7,13 +7,27 @@
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
     <script src="bower_components/backbone.localStorage/backbone.localStorage-min.js"></script>
+
+
+    <script type="text/html" id="todoCreaterTemplate">
+
+        <input type="text" id="input-todo">
+        <button id="add">Add</button>
+
+    </script>
+
+
 </head>
 <body>
 
-<p>Backbone Todo</p>
+
+<header id="todoCreater">
+
+</header>
+
 
 <script src="src/model/todo.js"></script>
 <script src="src/collection/todos.js"></script>
-
+<script src="src/view/todoCreater.js"></script>
 </body>
 </html>

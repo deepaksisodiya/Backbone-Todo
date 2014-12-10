@@ -30,4 +30,4 @@ app.Todo = Backbone.Model.extend({
 
 });
 
-var todo = new Todo();
+var todo = new app.Todo();
