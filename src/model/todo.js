@@ -3,7 +3,9 @@
  */
 
 
-var Todo = Backbone.Model.extend({
+var app = {};
+
+app.Todo = Backbone.Model.extend({
 
 	defaults : {
 		title : "",
