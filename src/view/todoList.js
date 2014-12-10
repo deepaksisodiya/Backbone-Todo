@@ -6,7 +6,8 @@
 app.TodoList = Backbone.View.extend({
 
 	events : {
-		"click #remove" : "clear"
+		"click #remove" : "clear",
+		"click #todoCheckbox" : "onCheckboxClick"
 	},
 
 	template: _.template($("#todoListTemplate").html()),
@@ -23,6 +24,9 @@ app.TodoList = Backbone.View.extend({
 		todos.on("destroy", function () {
 			self.render();
 		});
+		todos.on("change", function () {
+			self.render();
+		});
 	},
 
 	render : function() {
@@ -35,6 +39,15 @@ app.TodoList = Backbone.View.extend({
 	clear: function(e) {
 		var index = $(e.target).attr("data-index");
 		todos.models[index].destroy();
+	},
+
+	onCheckboxClick : function(e) {
+		var index = $(e.target).attr("data-index");
+		if(todos.models[index].get("completed") === true) {
+			todos.models[index].save({ completed : false });
+		} else {
+			todos.models[index].save({ completed : true });
+		}
 	}
 
 });

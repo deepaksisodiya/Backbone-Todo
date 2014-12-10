@@ -7,6 +7,7 @@
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
     <script src="bower_components/backbone.localStorage/backbone.localStorage-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 
     <script type="text/html" id="todoCreaterTemplate">
@@ -22,12 +23,22 @@
         <% _.each(obj, function(item, index, array) { %>
 
         <div>
-            <input type="checkbox">
-            <label>  <%= item.get("title") %> </label>
+            <input <% if(item.get("completed")) { %> checked <% } %> type="checkbox" id="todoCheckbox" data-index="<%= index %>" >
+            <label <% if(item.get("completed")) { %> class="completed" <% } %> > <%= item.get("title") %> </label>
+            <% if(item.get("completed")){%>✓<% }%>
             <button data-index="<%= index %>" id="remove">x</button>
         </div>
 
         <% }) %>
+
+    </script>
+
+    <script type="text/html" id="todoFooterTemplate">
+
+        <a href="#all">All</a>
+        <a href="#completed">Completed</a>
+        <a href="#remaining">Remaining</a>
+        <label>RemoveAll</label>
 
     </script>
 
@@ -43,10 +54,15 @@
 
 </section>
 
+<footer id="todoFooter">
+
+</footer>
+
 
 <script src="src/model/todo.js"></script>
 <script src="src/collection/todos.js"></script>
 <script src="src/view/todoCreater.js"></script>
 <script src="src/view/todoList.js"></script>
+<script src="src/view/todoFooter.js"></script>
 </body>
 </html>

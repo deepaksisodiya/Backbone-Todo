@@ -1,0 +1,8 @@
+.completed {
+    text-decoration : line-through;
+    color: dimgrey;
+}
+
+.removeUnderLine {
+    text-decoration: none;
+}
