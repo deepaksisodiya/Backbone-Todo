@@ -9,12 +9,25 @@ app.TodoFooter = Backbone.View.extend({
 
 	initialize : function () {
 		console.log("TodoFooter view")
+
 		this.render();
+
+		var self = this;
+		todos.on("add", function () {
+			self.render();
+		});
+		todos.on("destroy", function () {
+			self.render();
+		});
+		todos.on("change", function () {
+			self.render();
+		});
+
 	},
 
 	render : function() {
 		var tempHTML = this.template({
-			obj: {}
+			obj: todos
 		});
 		this.$el.html(tempHTML);
 	}

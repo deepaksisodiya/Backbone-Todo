@@ -20,14 +20,18 @@
 
     <script type="text/html" id="todoListTemplate">
 
-        <% _.each(obj, function(item, index, array) { %>
+        <% _.each(obj.list, function(item, index, array) { %>
 
-        <div>
-            <input <% if(item.get("completed")) { %> checked <% } %> type="checkbox" id="todoCheckbox" data-index="<%= index %>" >
-            <label <% if(item.get("completed")) { %> class="completed" <% } %> > <%= item.get("title") %> </label>
-            <% if(item.get("completed")){%>✓<% }%>
-            <button data-index="<%= index %>" id="remove">x</button>
-        </div>
+            <% if(obj.mode === "all" || (obj.mode === "completed" && item.get("completed") === true) || (obj.mode === "remaining" && item.get("completed") === false)) { %>
+
+                <div>
+                    <input <% if(item.get("completed")) { %> checked <% } %> type="checkbox" id="todoCheckbox" data-index="<%= index %>" >
+                    <label <% if(item.get("completed")) { %> class="completed" <% } %> > <%= item.get("title") %> </label>
+                    <% if(item.get("completed")){%>✓<% }%>
+                    <button data-index="<%= index %>" id="remove">x</button>
+                </div>
+
+            <% } %>
 
         <% }) %>
 
@@ -35,9 +39,9 @@
 
     <script type="text/html" id="todoFooterTemplate">
 
-        <a href="#all">All</a>
-        <a href="#completed">Completed</a>
-        <a href="#remaining">Remaining</a>
+        <a href="#all" class="removeUnderLine">All (<%= obj.completed().length + obj.remaining().length %>) </a>
+        <a href="#completed" class="removeUnderLine">Completed (<%= obj.completed().length %>)</a>
+        <a href="#remaining" class="removeUnderLine">Remaining (<%= obj.remaining().length %>)</a>
         <label>RemoveAll</label>
 
     </script>

@@ -14,6 +14,13 @@ app.TodoList = Backbone.View.extend({
 
 	initialize : function() {
 		console.log("TodoList");
+
+		if (location.hash === "") {
+			this.mode = "all";
+		} else {
+			this.mode = location.hash.slice(1);
+		}
+
 		var self = this;
 		todos.fetch().done(function () {
 			self.render();
@@ -27,11 +34,18 @@ app.TodoList = Backbone.View.extend({
 		todos.on("change", function () {
 			self.render();
 		});
+		$(window).on("hashchange", function(e) {
+			self.mode = location.hash.slice(1);
+			self.render();
+		});
 	},
 
 	render : function() {
 		var tempHTML = this.template({
-			obj: todos.models
+			obj: {
+				list: todos.models,
+				mode: this.mode
+			}
 		});
 		this.$el.html(tempHTML);
 	},
