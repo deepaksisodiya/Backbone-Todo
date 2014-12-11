@@ -29,5 +29,3 @@ app.Todo = Backbone.Model.extend({
 	}
 
 });
-
-var todo = new app.Todo();

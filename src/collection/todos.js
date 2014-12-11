@@ -28,5 +28,3 @@ app.Todos = Backbone.Collection.extend({
 	}
 
 });
-
-var todos = new app.Todos();

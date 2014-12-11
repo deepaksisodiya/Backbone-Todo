@@ -62,5 +62,3 @@ app.TodoList = Backbone.View.extend({
 	}
 
 });
-
-var todoListObj = new app.TodoList({ el : $("#todoList") });

@@ -39,5 +39,3 @@ app.TodoFooter = Backbone.View.extend({
 	}
 
 });
-
-var todoFooterObj = new app.TodoFooter({ el : $("#todoFooter") });

@@ -26,9 +26,7 @@ app.createrView = Backbone.View.extend({
 	addTodo : function() {
 		var inputValue = $("#input-todo").val();
 		todos.create({ title : inputValue , completed : false});
-		//$("#input-todo").val("");
+		$("#input-todo").val("");
 	}
 
 });
-
-var createrViewObj = new app.createrView({ el : $("#todoCreater") });
