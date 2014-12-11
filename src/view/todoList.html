@@ -1,0 +1,22 @@
+<% _.each(obj.list, function(item, index, array) { %>
+
+<% if(obj.mode === "all" || (obj.mode === "completed" && item.get("completed") === true) || (obj.mode === "remaining" && item.get("completed") === false)) { %>
+
+<div>
+    <div class="row">
+        <div class="col-sm-1">
+            <input <% if(item.get("completed")) { %> checked <% } %> type="checkbox" id="todoCheckbox" data-index="<%= index %>" >
+        </div>
+        <div class="col-sm-9">
+            <label <% if(item.get("completed")) { %> class="completed" <% } %> > <%= item.get("title") %> <span <% if(item.get("completed")){%>class="glyphicon glyphicon-ok"<% }%> ></span></label>
+
+        </div>
+        <div class="col-sm-1">
+            <button data-index="<%= index %>"  class="btn btn-success" id="remove">x</button>
+        </div>
+    </div>
+</div>
+
+<% } %>
+
+<% }) %>

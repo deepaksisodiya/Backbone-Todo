@@ -3,8 +3,14 @@
  */
 
 
-new app.Todo();
 var todos = new app.Todos();
-new app.createrView({ el : $("#todoCreater") });
-new app.TodoList({ el : $("#todoList") });
-new app.TodoFooter({ el : $("#todoFooter") });
+new app.Todo();
+new app.createrView({
+  el: $("#todoCreater")
+});
+new app.TodoList({
+  el: $("#todoList")
+});
+new app.TodoFooter({
+  el: $("#todoFooter")
+});

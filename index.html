@@ -7,62 +7,50 @@
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
     <script src="bower_components/backbone.localStorage/backbone.localStorage-min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-
-    <script type="text/html" id="todoCreaterTemplate">
-
-        <input type="text" id="input-todo">
-        <button id="add">Add</button>
-
-    </script>
-
-
-    <script type="text/html" id="todoListTemplate">
-
-        <% _.each(obj.list, function(item, index, array) { %>
-
-            <% if(obj.mode === "all" || (obj.mode === "completed" && item.get("completed") === true) || (obj.mode === "remaining" && item.get("completed") === false)) { %>
-
-                <div>
-                    <input <% if(item.get("completed")) { %> checked <% } %> type="checkbox" id="todoCheckbox" data-index="<%= index %>" >
-                    <label <% if(item.get("completed")) { %> class="completed" <% } %> > <%= item.get("title") %> </label>
-                    <% if(item.get("completed")){%>✓<% }%>
-                    <button data-index="<%= index %>" id="remove">x</button>
-                </div>
-
-            <% } %>
-
-        <% }) %>
-
-    </script>
-
-    <script type="text/html" id="todoFooterTemplate">
-
-        <a href="#all" class="removeUnderLine">All (<%= obj.completed().length + obj.remaining().length %>) </a>
-        <a href="#completed" class="removeUnderLine">Completed (<%= obj.completed().length %>)</a>
-        <a href="#remaining" class="removeUnderLine">Remaining (<%= obj.remaining().length %>)</a>
-        <label id="removeCompleted">Remove Completed</label>
-
-    </script>
+    <link rel="stylesheet" type="text/css" href="src/style.css">
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 
 </head>
 <body>
 
 
-<header id="todoCreater">
 
-</header>
+<div class="container">
 
-<section id="todoList">
+    <div class="jumbotron">
+        <h2 class="text-center">Backbone Todo</h2>
+        <header class="text-center" id="todoCreater">
+        </header>
 
-</section>
+        <div class="row">
 
-<footer id="todoFooter">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="background-color:lavender;">
 
-</footer>
+
+                <section id="todoList">
+                </section>
+
+                <footer id="todoFooter">
+                </footer>
+
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
 
 
+
+    </div>
+
+
+
+
+
+</div>
+
+
+<script src="src/template.js"></script>
 <script src="src/model/todo.js"></script>
 <script src="src/collection/todos.js"></script>
 <script src="src/view/todoCreater.js"></script>

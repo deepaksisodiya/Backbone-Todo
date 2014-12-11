@@ -5,37 +5,34 @@
 
 app.TodoFooter = Backbone.View.extend({
 
-	events : {
-		"click #removeCompleted" : "onRemoveCompletedClick"
-	},
+  events: {
+    "click #removeCompleted": "onRemoveCompletedClick"
+  },
 
+  initialize: function() {
+    console.log("TodoFooter view");
 
-	template: _.template($("#todoFooterTemplate").html()),
+    this.render("first");
 
-	initialize : function () {
-		console.log("TodoFooter view")
+    var self = this;
+    todos.on("sync", function() {
+      self.render("sync");
+    });
+    todos.on("destroy", function() {
+      self.render("destroy");
+    });
+  },
 
-		this.render();
+  render: function(ename) {
+    console.log("rendering Footer", ename);
+    var tempHTML = templates["todoFooter.html"]({
+      obj: todos
+    });
+    this.$el.html(tempHTML);
+  },
 
-		var self = this;
-		todos.on("destroy", function () {
-			self.render();
-		});
-		todos.on("change", function () {
-			self.render();
-		});
-
-	},
-
-	render : function() {
-		var tempHTML = this.template({
-			obj: todos
-		});
-		this.$el.html(tempHTML);
-	},
-
-	onRemoveCompletedClick : function() {
-		todos.clearCompleted();
-	}
+  onRemoveCompletedClick: function() {
+    todos.clearCompleted();
+  }
 
 });

@@ -5,26 +5,29 @@
 
 app.Todos = Backbone.Collection.extend({
 
-	Model : app.Todo,
+  Model: app.Todo,
 
-	localStorage: new Backbone.LocalStorage("todos-backbone"),
+  localStorage: new Backbone.LocalStorage("todos-backbone"),
 
-	initialize : function() {
-		console.log("collection Todo");
-	},
+  //url : 'http://localhost:1337/todos',
 
-	completed: function() {
-		return this.filter(function( todo ) {
-			return todo.get('completed');
-		});
-	},
+  initialize: function() {
+    console.log("collection Todo");
+    this.fetch();
+  },
 
-	remaining: function() {
-		return this.without.apply( this, this.completed() );
-	},
-	
-	clearCompleted : function () {
-		_.invoke(this.completed(), "destroy");
-	}
+  completed: function() {
+    return this.filter(function(todo) {
+      return todo.get('completed');
+    });
+  },
+
+  remaining: function() {
+    return this.without.apply(this, this.completed());
+  },
+
+  clearCompleted: function() {
+    _.invoke(this.completed(), "destroy");
+  }
 
 });

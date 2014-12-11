@@ -7,25 +7,29 @@ var app = {};
 
 app.Todo = Backbone.Model.extend({
 
-	defaults : {
-		title : "",
-		completed : false
-	},
+  defaults: {
+    title: "",
+    completed: false
+  },
 
-	initialize : function() {
-		console.log("todo model");
-	},
+  initialize: function() {
+    console.log("todo model");
+  },
 
-	setCompleted : function() {
-		this.set({"completed" : true});
-	},
+  setCompleted: function() {
+    this.set({
+      "completed": true
+    });
+  },
 
-	setIncompleted : function() {
-		this.set({"completed" : false});
-	},
+  setIncompleted: function() {
+    this.set({
+      "completed": false
+    });
+  },
 
-	isCompleted : function() {
-		return this.get("completed");
-	}
+  isCompleted: function() {
+    return this.get("completed");
+  }
 
 });

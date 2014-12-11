@@ -5,28 +5,34 @@
 
 app.createrView = Backbone.View.extend({
 
-	events : {
-		"click #add" : "addTodo"
-	},
+  events: {
+    "keyup #input-todo": "addTodo"
+  },
 
-	initialize : function() {
-		console.log("creater view");
-		this.render({}, "todoCreaterTemplate", this.$el);
-	},
+  initialize: function() {
+    console.log("creater view");
+    this.render({}, "todoCreaterTemplate", this.$el);
+  },
 
-	render : function(dataObj, tempId, domNode) {
-		var tempStr = $("#" + tempId).html();
-		var compileTemp = _.template(tempStr);
-		var tempHTML = compileTemp({
-			obj: dataObj
-		});
-		domNode.html(tempHTML);
-	},
+  render: function(dataObj, tempId, domNode) {
+    console.log("rendering Creator");
 
-	addTodo : function() {
-		var inputValue = $("#input-todo").val();
-		todos.create({ title : inputValue , completed : false});
-		$("#input-todo").val("");
-	}
+    var tempHTML = templates["todoCreater.html"]({
+      obj: dataObj
+    });
+    domNode.html(tempHTML);
+  },
+
+  addTodo: function(e) {
+    if (e.keyCode === 13) {
+      var inputValue = e.target.value;
+      todos.create({
+        title: inputValue,
+        completed: false
+      });
+      e.target.value = "";
+    }
+    return false;
+  }
 
 });
