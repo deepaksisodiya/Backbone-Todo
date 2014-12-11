@@ -8,7 +8,6 @@ app.Todos = Backbone.Collection.extend({
   Model: app.Todo,
 
   localStorage: new Backbone.LocalStorage("todos-backbone"),
-
   //url : 'http://localhost:1337/todos',
 
   initialize: function() {
