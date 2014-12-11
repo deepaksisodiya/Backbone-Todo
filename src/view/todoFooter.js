@@ -5,6 +5,10 @@
 
 app.TodoFooter = Backbone.View.extend({
 
+	events : {
+		"click #removeCompleted" : "onRemoveCompletedClick"
+	},
+
 
 	template: _.template($("#todoFooterTemplate").html()),
 
@@ -28,6 +32,10 @@ app.TodoFooter = Backbone.View.extend({
 			obj: todos
 		});
 		this.$el.html(tempHTML);
+	},
+
+	onRemoveCompletedClick : function() {
+		todos.clearCompleted();
 	}
 
 });

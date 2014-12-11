@@ -21,6 +21,10 @@ app.Todos = Backbone.Collection.extend({
 
 	remaining: function() {
 		return this.without.apply( this, this.completed() );
+	},
+	
+	clearCompleted : function () {
+		_.invoke(this.completed(), "destroy");
 	}
 
 });
