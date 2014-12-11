@@ -30,7 +30,7 @@ module.exports = function(grunt) {
           livereload: true
         },
         files: ["src/**/*.html"],
-        tasks:["template"]
+        tasks: ["template"]
       }
     },
     jsbeautifier: {

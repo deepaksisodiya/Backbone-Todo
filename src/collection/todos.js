@@ -18,7 +18,7 @@ app.Todos = Backbone.Collection.extend({
 
   completed: function() {
     return this.filter(function(todo) {
-      return todo.get('completed');
+      return todo.get("completed");
     });
   },
 
