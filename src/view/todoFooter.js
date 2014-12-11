@@ -11,9 +11,7 @@ app.TodoFooter = Backbone.View.extend({
 
   initialize: function() {
     console.log("TodoFooter view");
-
     this.render("first");
-
     var self = this;
     todos.on("sync", function() {
       self.render("sync");

@@ -17,13 +17,11 @@ app.TodoList = Backbone.View.extend({
     } else {
       this.mode = location.hash.slice(1);
     }
-
     var self = this;
     this.render("first");
     todos.on("sync", function() {
       self.render("sync");
     });
-
     todos.on("destroy", function() {
       self.render("destroy");
     });
@@ -32,6 +30,7 @@ app.TodoList = Backbone.View.extend({
       self.render();
     });
   },
+
   render: function(ename) {
     console.log("rendering List -> ", ename);
     var tempHTML = templates["todoList.html"]({
@@ -42,6 +41,7 @@ app.TodoList = Backbone.View.extend({
     });
     this.$el.html(tempHTML);
   },
+
   clear: function(e) {
     var index = $(e.target).attr("data-index");
     todos.models[index].destroy();
