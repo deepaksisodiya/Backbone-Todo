@@ -25,9 +25,6 @@ app.TodoList = Backbone.View.extend({
 		todos.fetch().done(function () {
 			self.render();
 		});
-		todos.on("add", function () {
-			self.render();
-		});
 		todos.on("destroy", function () {
 			self.render();
 		});

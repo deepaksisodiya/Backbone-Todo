@@ -5,6 +5,7 @@
 
 app.TodoFooter = Backbone.View.extend({
 
+
 	template: _.template($("#todoFooterTemplate").html()),
 
 	initialize : function () {
@@ -13,9 +14,6 @@ app.TodoFooter = Backbone.View.extend({
 		this.render();
 
 		var self = this;
-		todos.on("add", function () {
-			self.render();
-		});
 		todos.on("destroy", function () {
 			self.render();
 		});
